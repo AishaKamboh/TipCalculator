@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container" >
+        
+        <div class="innercontainer">
+            <h4  id="id1">TIP CALCULATOR</h4>
+        </div>
+        <div class="container2"> 
+        <p>How much was your Bill</p>
+        <label for="text">RS.</label>
+       <input type="text" placeholder="Bill Amount" id="amount">
+
+       <p>How was your service</p>
+      <select name="name" id="service"> 
+          <option value="---Choose an option---">---Choose an option---</option> 
+          <option value="0.15">15&#37; &#45; - Outstanding</option>
+          <option value="0.10">10&#37; &#45; - Good</option>
+          <option value="0.05">5&#37; &#45; - It was ok</option>
+      </select>
+
+      <p>How many  people are sharing the Bill</p>
+      <input type="text"  placeholder="Number of People" id="people">
+      <label for="people">People</label> <br> <br><br>  
+      <button id="btn">Calculate</button>
+    </div>
+
+
+    <div id="totaltip">
+        <span>RS. </span><span id="tip"> 0.00</span>
+        <span id="each">each</span>
+    </div>
+    </div>
+
+<script>
+    function calculateTip(){
+    var x=document.getElementById("amount").value;
+    var y=document.getElementById("people").value;
+    var z=document.getElementById("service").value;
+    if(x==="" || z==0){
+        alert("Enter the values");
+        return ;
+    }
+    if(y==="" || y<=1){
+        y=1;
+        document.getElementById("each").style.display="none";
+    }
+    else{
+        document.getElementById("each").style.display="block";
+    }
+    var total=(x*z)/y;
+    total=Math.round(total);
+    document.getElementById("totaltip").style.display="block";
+    document.getElementById("tip").innerHTML=total;
+    }
+
+    document.getElementById("totaltip").style.display="none";
+    document.getElementById("each").style.display="none";
+
+    document.getElementById("btn").onclick=function(){
+        calculateTip();
+
+    }
+
+
+</script>
+
+
+</body>
+</html>
